@@ -1,8 +1,10 @@
 /* Icebreakers service worker.
    Strategi: förcacha appskalet vid installation, svara cache-först, uppdatera i bakgrunden.
+   Cachar delas av alla appar på samma domän (github.io), så bara cachar med PREFIX rensas.
    Höj VERSION vid varje ändring av filerna nedan så att gamla cachar rensas.
    Kontrollera listan med: node tools/check-locales.js */
-const VERSION = 'icebreakers-v2';
+const PREFIX = 'icebreakers-';
+const VERSION = PREFIX + 'v3';
 const SHELL = [
   './',
   'index.html',
@@ -31,7 +33,7 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k))))
+      .then(keys => Promise.all(keys.filter(k => k.startsWith(PREFIX) && k !== VERSION).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });

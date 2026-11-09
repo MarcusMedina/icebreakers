@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Icebreakers</title>
+<meta name="description" content="Conversation starter for shy people: draw a card and share something that fits the picture.">
+<meta name="theme-color" content="#E7EBF4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151B36" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Icebreakers">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="app">
+  <header class="top">
+    <h1>Icebreakers</h1>
+    <div class="topr"><p class="count" id="count"></p><button type="button" class="chip helpbtn" id="helpbtn" aria-expanded="false" aria-controls="help"></button></div>
+  </header>
+  <div class="stage" id="stage" role="button" tabindex="0" data-i18n-attr="aria-label:ui.stageLabel">
+    <div class="hand" id="hand" data-n="1"></div>
+  </div>
+  <button class="draw" id="draw" type="button"></button>
+  <div class="modes" id="coderow" hidden><label for="code" data-i18n="ui.code"></label><input id="code" class="code" type="text" maxlength="16" autocomplete="off" autocapitalize="none" spellcheck="false" data-i18n-attr="placeholder:ui.codePlaceholder"><span class="rnd" id="rnd"></span></div>
+  <div class="modes" role="group" data-i18n-attr="aria-label:ui.playersLabel"><span data-i18n="ui.players"></span><div class="seg"><button type="button" class="npb" data-np="1" aria-pressed="true">1</button><button type="button" class="npb" data-np="2" aria-pressed="false">2</button><button type="button" class="npb" data-np="3" aria-pressed="false">3</button><button type="button" class="npb" data-np="4" aria-pressed="false">4</button></div></div>
+  <div class="modes" id="posrow" role="group" data-i18n-attr="aria-label:ui.position" hidden><span data-i18n="ui.position"></span><div class="seg"><button type="button" class="posb" data-pos="1" aria-pressed="true">1</button><button type="button" class="posb" data-pos="2" aria-pressed="false">2</button><button type="button" class="posb" data-pos="3" aria-pressed="false">3</button><button type="button" class="posb" data-pos="4" aria-pressed="false">4</button></div></div>
+  <div class="modes" role="group" data-i18n-attr="aria-label:ui.perDrawLabel"><span data-i18n="ui.perDraw"></span><div class="seg"><button type="button" class="segb" data-n="1" aria-pressed="true">1</button><button type="button" class="segb" data-n="2" aria-pressed="false">2</button></div></div>
+  <div class="chips" id="chips" role="group" data-i18n-attr="aria-label:ui.chipsLabel"></div>
+  <div class="foot">
+    <button class="shuffle" id="shuffle" type="button" data-i18n="ui.shuffle"></button>
+    <button class="shuffle" id="full" type="button" aria-pressed="false" data-i18n="ui.fullscreen"></button>
+    <select id="lang" class="langsel" data-i18n-attr="aria-label:ui.language"></select>
+  </div>
+  <button class="chip exit" id="exit" type="button" data-i18n="ui.exitFull"></button>
+  <section id="help" class="help" hidden aria-labelledby="helph">
+    <div id="helpbody" data-i18n-html="help.html"></div>
+    <button type="button" class="draw" id="helpclose" data-i18n="ui.helpBack"></button>
+  </section>
+  <p class="sr" id="live" aria-live="polite"></p>
+</main>
+
+<script src="js/i18n.js"></script>
+<script src="i18n/sv.js"></script>
+<script src="i18n/en.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/app.js"></script>
+<script src="js/sw-register.js"></script>
+</body>
+</html>
